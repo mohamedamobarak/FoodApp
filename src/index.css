@@ -1,0 +1,10 @@
+.authContainer {
+    background-image: url("./assets/Images/AuthBackground.png");
+    background-size: cover;
+    background-position: center center;
+    height: 100vh; 
+}
+
+.overlay {
+    background: linear-gradient(45deg,rgba(20, 68, 15, 0.7), rgba(0, 0, 0, 0.8));
+}
