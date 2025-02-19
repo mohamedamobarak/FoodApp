@@ -22,12 +22,10 @@ export default function Register() {
       );
       console.log(response.data.token);
 
-      localStorage.setItem("Token", response.data.token);
-
       toast.success(response?.data?.message || "Register Success");
 
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/verify-account");
       }, 3000);
     } catch (error) {
       console.error(error.response.data.message);
@@ -47,7 +45,9 @@ export default function Register() {
               </div>
               <div className="title">
                 <h3 className="h5">Register</h3>
-                <p className="text-muted">Welcome! Please enter your details.</p>
+                <p className="text-muted">
+                  Welcome! Please enter your details.
+                </p>
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -58,16 +58,22 @@ export default function Register() {
                         <i className="fa-solid fa-user"></i>
                       </span>
 
-                                      {/* userName */}
+                      {/* userName */}
 
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Username"
-                        {...register("userName", { required: "Username is required" })}
+                        {...register("userName", {
+                          required: "Username is required",
+                        })}
                       />
                     </div>
-                    {errors.userName && <span className="text-danger">{errors.userName.message}</span>}
+                    {errors.userName && (
+                      <span className="text-danger">
+                        {errors.userName.message}
+                      </span>
+                    )}
                   </div>
 
                   <div className="col-md-6">
@@ -76,7 +82,7 @@ export default function Register() {
                         <i className="fa-solid fa-envelope"></i>
                       </span>
 
-                                      {/* Email */}
+                      {/* Email */}
 
                       <input
                         type="email"
@@ -85,16 +91,21 @@ export default function Register() {
                         {...register("email", {
                           required: "Email is required",
 
-                                              // -----------------Email Validation ---------------------
+                          // -----------------Email Validation ---------------------
 
                           pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            value:
+                              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                             message: "Please enter a valid email",
                           },
                         })}
                       />
                     </div>
-                    {errors.email && <span className="text-danger">{errors.email.message}</span>}
+                    {errors.email && (
+                      <span className="text-danger">
+                        {errors.email.message}
+                      </span>
+                    )}
                   </div>
 
                   <div className="col-md-6">
@@ -103,16 +114,22 @@ export default function Register() {
                         <i className="fa-solid fa-globe"></i>
                       </span>
 
-                                      {/* Country */}
+                      {/* Country */}
 
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Country"
-                        {...register("country", { required: "Country is required" })}
+                        {...register("country", {
+                          required: "Country is required",
+                        })}
                       />
                     </div>
-                    {errors.country && <span className="text-danger">{errors.country.message}</span>}
+                    {errors.country && (
+                      <span className="text-danger">
+                        {errors.country.message}
+                      </span>
+                    )}
                   </div>
 
                   <div className="col-md-6">
@@ -121,7 +138,7 @@ export default function Register() {
                         <i className="fa-solid fa-phone"></i>
                       </span>
 
-                                      {/* Phone Number */}
+                      {/* Phone Number */}
 
                       <input
                         type="text"
@@ -130,16 +147,21 @@ export default function Register() {
                         {...register("phoneNumber", {
                           required: "Phone number is required",
 
-                                              // -----------------Phone Number Validation ---------------------
+                          // -----------------Phone Number Validation ---------------------
 
                           pattern: {
                             value: /^(?:\+20|0)?1[0-9]{9}$/,
-                            message: "Please enter a valid Egyptian phone number",
+                            message:
+                              "Please enter a valid Egyptian phone number",
                           },
                         })}
                       />
                     </div>
-                    {errors.phoneNumber && <span className="text-danger">{errors.phoneNumber.message}</span>}
+                    {errors.phoneNumber && (
+                      <span className="text-danger">
+                        {errors.phoneNumber.message}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -149,29 +171,35 @@ export default function Register() {
                       <span className="input-group-text">
                         <i className="fa-solid fa-lock"></i>
                       </span>
-                                      {/* Password */}
+                      {/* Password */}
 
                       <input
                         type="password"
                         className="form-control"
                         placeholder="Password"
                         {...register("password", {
-
-                                              // -----------------Password Validation ---------------------
+                          // -----------------Password Validation ---------------------
 
                           required: "Password is required",
                           minLength: {
                             value: 8,
-                            message: "Password must be at least 8 characters long",
+                            message:
+                              "Password must be at least 8 characters long",
                           },
                           pattern: {
-                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                            message: "Password must include uppercase, lowercase, number, and special character",
+                            value:
+                              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                            message:
+                              "Password must include uppercase, lowercase, number, and special character",
                           },
                         })}
                       />
                     </div>
-                    {errors.password && <span className="text-danger">{errors.password.message}</span>}
+                    {errors.password && (
+                      <span className="text-danger">
+                        {errors.password.message}
+                      </span>
+                    )}
                   </div>
 
                   <div className="col-md-6">
@@ -179,31 +207,36 @@ export default function Register() {
                       <span className="input-group-text">
                         <i className="fa-solid fa-lock"></i>
                       </span>
-                                                            {/* Confirm Password */}
+                      {/* Confirm Password */}
 
                       <input
                         type="password"
                         className="form-control"
                         placeholder="Confirm Password"
                         {...register("confirmPassword", {
-
-                                                           // --------------- Confirm Password Validation ---------------------
+                          // --------------- Confirm Password Validation ---------------------
 
                           required: "Confirm Password is required",
                           validate: (value) =>
-                            value === watch("password") || "Passwords do not match",
+                            value === watch("password") ||
+                            "Passwords do not match",
                         })}
                       />
                     </div>
-                    {errors.confirmPassword && <span className="text-danger">{errors.confirmPassword.message}</span>}
+                    {errors.confirmPassword && (
+                      <span className="text-danger">
+                        {errors.confirmPassword.message}
+                      </span>
+                    )}
                   </div>
                 </div>
-                                      {/* Button */}
+                {/* Button */}
 
-                <button className="btn btn-success w-100 mt-3" type="submit">Register</button>
+                <button className="btn btn-success w-100 mt-3" type="submit">
+                  Register
+                </button>
                 <div className="Links d-flex justify-content-between my-3">
-
-                                                        {/* Link to login page */}
+                  {/* Link to login page */}
 
                   <Link to="/" className="text-dark text-decoration-none">
                     Already have an account? Log in
