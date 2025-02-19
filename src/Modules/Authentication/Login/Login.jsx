@@ -27,7 +27,7 @@ const navigate = useNavigate();
       toast.success(response?.data?.message || "Login failed!");
 
       setTimeout(() => {
-        navigate('/register'); // Change "/dashboard" to your target route
+        navigate('/dashboard'); // To  "/dashboard" to your target route
       }, 3000);
 
     } 
@@ -49,7 +49,7 @@ const navigate = useNavigate();
             <div className="col-md-5 bg-white py-3 px-5 rounded-3">
 
             {/* toaster  container Tag*/}
-            
+
             <ToastContainer position="top-center"  autoClose={3000}/>    
 
               <div className="logoContainer text-center">
