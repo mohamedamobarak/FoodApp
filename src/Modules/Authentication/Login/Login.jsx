@@ -24,7 +24,7 @@ const navigate = useNavigate();
 
       localStorage.setItem("Token", response.data.token); // Save token on local storge
 
-      toast.success(response?.data?.message || "Login failed!");
+      toast.success(response?.data?.message || "Login Success!");
 
       setTimeout(() => {
         navigate('/dashboard'); // To  "/dashboard" to your target route
