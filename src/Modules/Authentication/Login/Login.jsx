@@ -1,12 +1,14 @@
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/Images/Logo1.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 
 export function Login() {
+  const [showPassword, setShowPassword] = useState(false);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   let {
     register,
     formState: { errors },
@@ -27,14 +29,11 @@ const navigate = useNavigate();
       toast.success(response?.data?.message || "Login Success!");
 
       setTimeout(() => {
-        navigate('/dashboard'); // To  "/dashboard" to your target route
+        navigate("/dashboard"); // To  "/dashboard" to your target route
       }, 3000);
+    } catch (error) {
+      /// ----------------- fail --------------------------
 
-    } 
-    
-    /// ----------------- fail --------------------------
-
-    catch (error) {
       console.error(error.response.data.message);
 
       toast.error(error.response?.data?.message || "Login failed!");
@@ -45,12 +44,10 @@ const navigate = useNavigate();
       <div className="  authContainer   ">
         <div className="container-fluid overlay">
           <div className="row vh-100  justify-content-center align-items-center">
-            
             <div className="col-md-5 bg-white py-3 px-5 rounded-3">
+              {/* toaster  container Tag*/}
 
-            {/* toaster  container Tag*/}
-
-            <ToastContainer position="top-center"  autoClose={3000}/>    
+              <ToastContainer position="top-center" autoClose={3000} />
 
               <div className="logoContainer text-center">
                 <img src={logo} alt="logo" className=" w-50" />
@@ -97,7 +94,7 @@ const navigate = useNavigate();
                     <i className="fa-solid fa-lock"></i>
                   </span>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-control"
                     placeholder="Password"
                     aria-label="Password"
@@ -119,6 +116,20 @@ const navigate = useNavigate();
                       },
                     })}
                   />
+                  {/* eye Icon */}
+                  <span
+                    className="position-absolute end-0 top-50 translate-middle-y me-3"
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <i
+                      className={`fa-solid ${
+                        showPassword ? "fa-eye" : "fa-eye-slash"
+                      }`}
+                    ></i>
+                  </span>
                 </div>
                 {errors.password && (
                   <span className="text-danger">{errors.password.message}</span>
