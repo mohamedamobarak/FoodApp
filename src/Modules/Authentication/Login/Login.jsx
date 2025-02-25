@@ -5,7 +5,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 
-export function Login() {
+// eslint-disable-next-line react/prop-types
+export function Login({saveLoginData}) {
+
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
@@ -16,29 +18,36 @@ export function Login() {
   } = useForm();
 
   let onSubmit = async (data) => {
-    /// ----------------- Success --------------------------
-    try {
-      let response = await axios.post(
-        "https://upskilling-egypt.com:3006/api/v1/Users/Login",
-        data
-      );
-      console.log(response.data.token);
+  try {
+    // ----------------- Success --------------------------
+    let response = await axios.post(
+      "https://upskilling-egypt.com:3006/api/v1/Users/Login",
+      data
+    );
 
-      localStorage.setItem("Token", response.data.token); // Save token on local storge
+    console.log(response.data.token);
 
-      toast.success(response?.data?.message || "Login Success!");
+    // Save Login data
+    localStorage.setItem("Token", response.data.token); // Save token in localStorage
 
-      setTimeout(() => {
-        navigate("/dashboard"); // To  "/dashboard" to your target route
-      }, 3000);
-    } catch (error) {
-      /// ----------------- fail --------------------------
+    toast.success(response?.data?.message || "Login Success!");
 
-      console.error(error.response.data.message);
+    setTimeout(() => {
+      navigate("/dashboard"); // Redirect to "/dashboard"
+    }, 3000);
 
-      toast.error(error.response?.data?.message || "Login failed!");
+    // بتعمل معايا error لو معملتش كده
+
+    if (typeof saveLoginData === "function") {
+      saveLoginData();              
     }
-  };
+
+  } catch (error) {
+    // ----------------- Fail --------------------------
+    toast.error(error.response?.data?.message || "Login failed!");
+  }
+};
+
   return (
     <>
       <div className="  authContainer   ">
