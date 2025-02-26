@@ -22,6 +22,27 @@ export default function UsersList() {
       console.error("Error fetching Users:", error);
     }
   };
+
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(
+        `https://upskilling-egypt.com:3006/api/v1/Users/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+          },
+        }
+      );
+  
+      // updateList
+      setUsers(users.filter(user => user.id !== id));  //usersList filter
+  
+    } catch (error) {
+      console.error("Error deleting User:", error);
+    }
+  };
+  
+
   useEffect(() => {
     getAllUsers();
   }, []);
@@ -35,12 +56,18 @@ export default function UsersList() {
       />
 
       <div className=" mt-4">
-        {/* Section Title */}
-        <div className="mb-4">
+
+
+
+          {/* Section Title */}
+      <div className="mb-4 d-flex justify-content-between p-2">
+      <div >
           <h3>Users list Details</h3>
-          <p>You can check all category details below.</p>
+          <p>ou can check all Users details below.</p>
         </div>
 
+        <button className="btn btn-success w-25 m-1" >ADD</button>
+        </div>
 
         {users.length > 0 ? (
   <table className="table table-bordered table-hover">
@@ -63,12 +90,10 @@ export default function UsersList() {
           <td>{users.email}</td>
           <td>{users.phoneNumber}</td>
           <td><img src={`https://upskilling-egypt.com:3006/${users.imagePath}` } className="w-25"></img></td>
-
-
           <td>
             <div className="d-flex gap-2">
               <button className="btn btn-warning btn-sm">Edit</button>
-              <button className="btn btn-danger btn-sm">Delete</button>
+              <button className="btn btn-danger btn-sm"onClick={()=>{deleteUser(users.id)}}>Delete</button>
             </div>
           </td>
         </tr>

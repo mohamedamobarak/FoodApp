@@ -35,12 +35,25 @@ export default function RecipesList() {
         img={userImg} 
       />
 
+      {/* Section Title */}
+      <div className="mb-4 d-flex justify-content-between p-2">
+      <div >
+          <h3>Recipes list Details</h3>
+          <p>You can check all category details below.</p>
+        </div>
+
+        <button className="btn btn-success w-25 m-1" >ADD</button>
+        </div>
+
       {recipes.length > 0 ? (
         <table className="table table-bordered table-hover">
           <thead className="bg-info text-white">
             <tr className="bg-success text-white">
               <th scope="col">ID</th>
               <th scope="col">Name</th>
+              <th scope="col">Image</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
               <th scope="col">Creation Date</th>
               <th scope="col">Actions</th>
             </tr>
@@ -50,6 +63,9 @@ export default function RecipesList() {
               <tr key={recipe.id}>
                 <td>{recipe.id}</td>
                 <td>{recipe.name}</td>
+                <td>{recipe.imagePath}</td>
+                <td>{recipe.description}</td>
+                <td>{recipe.price} EGP</td>
                 <td>{new Date(recipe.creationDate).toLocaleDateString()}</td>
                 <td>
                   <div className="d-flex gap-2">
