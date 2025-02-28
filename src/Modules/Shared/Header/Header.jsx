@@ -4,8 +4,10 @@
 // eslint-disable-next-line react/prop-types
 export default function Header({ title, description ,img }) {
   return (
-    <div className="container-fluid  bg-success text-white">
-      <div className="row align-items-center">
+
+    <div className="m-2  ">
+    <div className="container-fluid  bg-success text-white rounded-4  overflow-hidden  ">
+      <div className="row align-items-center header-background  ">
         {/* Text Part*/}
         <div className="col-lg-7 col-md-8">
           <div className="caption text-left">
@@ -15,12 +17,13 @@ export default function Header({ title, description ,img }) {
         </div>
 
         {/* Image part*/}
-        <div className="col-lg-5 col-md-4 d-flex justify-content-center align-items-start">
+        <div className="col-lg-5 col-md-4 d-flex justify-content-center  ">
           <div className="img-container  ">
           <img src={img}/>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

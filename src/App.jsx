@@ -17,6 +17,7 @@ import UsersList from "./Modules/Users/Userslist/UsersList";
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import ProtectedRoute from "./Modules/Shared/ProtectedRoute/ProtectedRoute";
+import ChangePass from "./Modules/Authentication/Change-Pass/ChangePass";
 
 function App() {
   {
@@ -57,6 +58,9 @@ function App() {
             <Route path="categories" element={<CategoriesList />} />
             <Route path="categories-data" element={<CategoriesData />} />
             <Route path="Users-list" element={<UsersList />} />
+            <Route path="Change-Password" element={<ChangePass/>} />
+
+            
             <Route path="*" element={<Notfound />} /> {/* errorElement */}
           </Route>
         </Routes>

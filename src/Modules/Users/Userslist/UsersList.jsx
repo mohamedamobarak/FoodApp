@@ -9,11 +9,13 @@ import deleteImg from "../../../assets/Images/Delete img.svg";
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [userID, setUserID] = useState("");
+  const [loading, setLoading] = useState(true); // set loading
+
 
   const getAllUsers = async () => {
     try {
       const response = await axios.get(
-        "https://upskilling-egypt.com:3006/api/v1/Users/?pageSize=5&pageNumber=1",
+        "https://upskilling-egypt.com:3006/api/v1/Users/?pageSize=10&pageNumber=1",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -23,6 +25,9 @@ export default function UsersList() {
       setUsers(response.data.data);
     } catch (error) {
       console.error("Error fetching Users:", error);
+    }
+    finally {
+      setLoading(false); // `setLoading finally`
     }
   };
 
@@ -63,7 +68,7 @@ export default function UsersList() {
         <div className="mb-4 d-flex justify-content-between p-2">
           <div>
             <h3>Users List Details</h3>
-            <p>You can check all users' details below.</p>
+            <p>You can check all Users details below.</p>
           </div>
           <button className="btn btn-success w-25 m-1">ADD</button>
         </div>
@@ -112,52 +117,58 @@ export default function UsersList() {
           </div>
         </div>
 
-        {users.length > 0 ? (
-          <table className="table table-bordered table-hover">
-            <thead className="bg-info text-white">
-              <tr className="bg-success text-white">
-                <th scope="col">ID</th>
-                <th scope="col">User Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Image</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.userName}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phoneNumber}</td>
-                  <td>
-                    <img
-                      src={`https://upskilling-egypt.com:3006/${user.imagePath}`}
-                      className="w-25"
-                      alt="User"
-                    />
-                  </td>
-                  <td>
-                    <div className="d-flex gap-2">
-                      <button className="btn btn-warning btn-sm">Edit</button>
-                      <button
-                        className="btn btn-danger btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                        onClick={() => setUserID(user.id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <NoData />
-        )}
+        {loading ? (
+  <div className="text-center my-5">
+    <div className="spinner-border text-success" role="status"></div>
+    <p className="mt-2 fw-bold text-success">Loading categories...</p>
+  </div>
+) : users.length > 0 ? (
+  <table className="table table-bordered table-hover">
+    <thead className="bg-info text-white">
+      <tr className="bg-success text-white">
+        <th scope="col">ID</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {users.map((user) => (
+        <tr key={user.id}>
+          <td>{user.id}</td>
+          <td>{user.userName}</td>
+          <td>{user.email}</td>
+          <td>{user.phoneNumber}</td>
+          <td>
+            <img
+              src={`https://upskilling-egypt.com:3006/${user.imagePath}`}
+              className="w-25"
+              alt="User"
+            />
+          </td>
+          <td>
+            <div className="d-flex gap-2">
+              <button className="btn btn-warning btn-sm">Edit</button>
+              <button
+                className="btn btn-danger btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                onClick={() => setUserID(user.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+) : (
+  <NoData />
+)}
+
       </div>
     </>
   );

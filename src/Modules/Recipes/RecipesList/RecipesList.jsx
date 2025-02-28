@@ -8,6 +8,8 @@ import deleteImg from "../../../assets/Images/Delete img.svg";
 export default function RecipesList() {
   const [recipes, setRecipes] = useState([]);
   const [recipeID, setRecipeID] = useState("");
+  const [loading, setLoading] = useState(true); // set loading
+
 
   const getAllRecipes = async () => {
     try {
@@ -22,6 +24,9 @@ export default function RecipesList() {
       setRecipes(response.data.data);
     } catch (error) {
       console.error("Error fetching Recipes:", error);
+    }
+    finally {
+      setLoading(false); // Setloading False
     }
   };
 
@@ -60,7 +65,11 @@ export default function RecipesList() {
           <h3>Recipes List Details</h3>
           <p>You can check all recipe details below.</p>
         </div>
-        <button className="btn btn-success w-25 m-1">ADD</button>
+        <div >
+          <button className="btn btn-success px-5 py-2">
+          Add New Item
+          </button>
+        </div>
       </div>
 
       <div
@@ -105,7 +114,12 @@ export default function RecipesList() {
         </div>
       </div>
 
-      {recipes.length > 0 ? (
+      {loading ? (
+  <div className="text-center my-5">
+    <div className="spinner-border text-success" role="status"></div>
+    <p className="mt-2 fw-bold text-success">Loading categories...</p>
+  </div>
+) : recipes.length > 0 ? (
         <table className="table table-bordered table-hover">
           <thead className="bg-info text-white">
             <tr className="bg-success text-white">

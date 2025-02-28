@@ -27,6 +27,7 @@ navigate("/login")
       {/* sidebar-container */}
       <Sidebar collapsed={isCollapsed}>
         <Menu>
+          <div className="m-auto d-flex justify-content-center">
           <div className="noHover">
             <MenuItem
               className="noHover"
@@ -36,7 +37,7 @@ navigate("/login")
             >
               {" "}
             </MenuItem>
-          </div>
+          </div></div>
 
           <div className="sideBarList">
             <MenuItem
@@ -66,6 +67,13 @@ navigate("/login")
             >
               {" "}
               Categories
+            </MenuItem>
+            <MenuItem
+              icon={<i className="fa-solid fa-lock"></i>}
+              component={<Link to="Change-Password" />}
+            >
+              {" "}
+              Change Password
             </MenuItem>
             <MenuItem icon={<i className="fa-solid fa-right-from-bracket"></i>}>
               {" "}
