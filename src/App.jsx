@@ -34,37 +34,40 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+       <BrowserRouter>
+      <Routes>
         {/* AuthLayout */}
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<Login saveLoginData={saveLoginData} />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="forget-password" element={<ForgetPass />} />
+          <Route path="reset-password" element={<ResetPass />} />
+          <Route path="verify-account" element={<VerifyAccount />} />
+        </Route>
 
-        <Routes>
-          <Route path="" element={<AuthLayout />}>
-            <Route index element={<Login saveLoginData={saveLoginData} />} />
-            <Route path="login" element={<Login  />} />
+        {/* Dashboard */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <MasterLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="recipes" element={<RecipesList />} />
+          <Route path="recipes-data" element={<RecipesData />} />
+          <Route path="categories" element={<CategoriesList />} />
+          <Route path="categories-data" element={<CategoriesData />} />
+          <Route path="Users-list" element={<UsersList />} />
+          <Route path="Change-Password" element={<ChangePass />} />
+        </Route>
 
-            <Route path="register" element={<Register />} />
-            <Route path="forget-password" element={<ForgetPass />} />
-            <Route path="reset-password" element={<ResetPass />} />
-            <Route path="verify-account" element={<VerifyAccount />} />
-            <Route path="*" element={<Notfound />} /> {/* errorElement */}
-          </Route>
-
-          {/* Dashboard */}
-
-          <Route path="/dashboard" element={<ProtectedRoute><MasterLayout /></ProtectedRoute>}>
-            <Route index element={<Dashboard />} />
-            <Route path="recipes" element={<RecipesList />} />
-            <Route path="recipes-data" element={<RecipesData />} />
-            <Route path="categories" element={<CategoriesList />} />
-            <Route path="categories-data" element={<CategoriesData />} />
-            <Route path="Users-list" element={<UsersList />} />
-            <Route path="Change-Password" element={<ChangePass/>} />
-
-            
-            <Route path="*" element={<Notfound />} /> {/* errorElement */}
-          </Route>
-        </Routes>
-      </BrowserRouter>
+        {/* Not Found */}
+        <Route path="*" element={<Notfound />} /> {/* أي مسار غير معروف */}
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }

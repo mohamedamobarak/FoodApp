@@ -1,103 +1,108 @@
 .authContainer {
-    background-image: url("./assets/Images/AuthBackground.png");
-    background-size: cover;
-    background-position: center center;
-    height: 100vh; 
+  background-image: url("./assets/Images/AuthBackground.png");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
 }
 
 .overlay {
-    background: linear-gradient(45deg,rgba(20, 68, 15, 0.7), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(45deg, rgba(20, 68, 15, 0.7), rgba(0, 0, 0, 0.8));
 }
-
 
 /* ------------------------------- Sidebar ------------------------------- */
 
 .sidebar-container {
-
 }
-
 
 .sidebar-container .ps-sidebar-container {
-
-    background-color:#1F263E !important;
-    color: aliceblue;
-    height: 110vh;
-
-
+  background-color: #1f263e !important;
+  color: aliceblue;
+  height: 110vh;
 }
 
-.sidebar-container .logo{
-
-margin-top: 20px;
-margin-left: auto;
-margin-right: auto;
-
+.sidebar-container .logo {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sidebar-container li {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-
 .sidebar-container .ps-menu-button:hover {
-    background-color: rgba(0, 146, 71, 0.1) !important;
-    border-left: 5px solid  rgba(0, 146, 71, 1) ;
+  background-color: rgba(0, 146, 71, 0.1) !important;
+  border-left: 5px solid rgba(0, 146, 71, 1);
 }
 
 .sidebar-container .noHover .ps-menu-button:hover {
-    background-color: transparent !important;
-    color: currentColor !important;
-    border-left: none ;
-
+  background-color: transparent !important;
+  color: currentColor !important;
+  border-left: none;
 }
 
 .sidebar-container .ps-sidebar-container {
-
-    border-top-right-radius:60px;
-
+  border-top-right-radius: 60px;
 }
 
 .sideBarList {
-
-padding-top: 50px;
-
+  padding-top: 50px;
 }
+/* ------------------------------- Header ------------------------------- */
+
 .header-background {
-    background-image: url("data:image/svg+xml,%3Csvg width='1205' height='307' viewBox='0 0 1205 307' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M580 249C580 265.491 566.423 279 549.5 279C532.577 279 519 265.491 519 249C519 232.509 532.577 219 549.5 219C566.423 219 580 232.509 580 249Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Cpath d='M719 131.5C719 139.931 711.967 147 703 147C694.033 147 687 139.931 687 131.5C687 123.069 694.033 116 703 116C711.967 116 719 123.069 719 131.5Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Ccircle cx='871.5' cy='29.5' r='15.5' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Ccircle cx='76' cy='231' r='64' stroke='white' stroke-opacity='0.05' stroke-width='24'/%3E%3Cpath d='M112 68.5C112 81.384 101.35 92 88 92C74.6497 92 64 81.384 64 68.5C64 55.616 74.6497 45 88 45C101.35 45 112 55.616 112 68.5Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Cpath d='M594.5 73.5C594.5 107.27 567.333 134.5 534 134.5C500.667 134.5 473.5 107.27 473.5 73.5C473.5 39.73 500.667 12.5 534 12.5C567.333 12.5 594.5 39.73 594.5 73.5Z' stroke='white' stroke-opacity='0.05' stroke-width='25'/%3E%3Cpath d='M1232.5 173C1232.5 227.9 1187.78 272.5 1132.5 272.5C1077.22 272.5 1032.5 227.9 1032.5 173C1032.5 118.1 1077.22 73.5 1132.5 73.5C1187.78 73.5 1232.5 118.1 1232.5 173Z' stroke='white' stroke-opacity='0.05' stroke-width='25'/%3E%3C/svg%3E");
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width='1205' height='307' viewBox='0 0 1205 307' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M580 249C580 265.491 566.423 279 549.5 279C532.577 279 519 265.491 519 249C519 232.509 532.577 219 549.5 219C566.423 219 580 232.509 580 249Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Cpath d='M719 131.5C719 139.931 711.967 147 703 147C694.033 147 687 139.931 687 131.5C687 123.069 694.033 116 703 116C711.967 116 719 123.069 719 131.5Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Ccircle cx='871.5' cy='29.5' r='15.5' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Ccircle cx='76' cy='231' r='64' stroke='white' stroke-opacity='0.05' stroke-width='24'/%3E%3Cpath d='M112 68.5C112 81.384 101.35 92 88 92C74.6497 92 64 81.384 64 68.5C64 55.616 74.6497 45 88 45C101.35 45 112 55.616 112 68.5Z' stroke='%2354B435' stroke-opacity='0.5' stroke-width='12'/%3E%3Cpath d='M594.5 73.5C594.5 107.27 567.333 134.5 534 134.5C500.667 134.5 473.5 107.27 473.5 73.5C473.5 39.73 500.667 12.5 534 12.5C567.333 12.5 594.5 39.73 594.5 73.5Z' stroke='white' stroke-opacity='0.05' stroke-width='25'/%3E%3Cpath d='M1232.5 173C1232.5 227.9 1187.78 272.5 1132.5 272.5C1077.22 272.5 1032.5 227.9 1032.5 173C1032.5 118.1 1077.22 73.5 1132.5 73.5C1187.78 73.5 1232.5 118.1 1232.5 173Z' stroke='white' stroke-opacity='0.05' stroke-width='25'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
+/* ------------------------------- Notfound background ------------------------------- */
+
 
 .notfound-background {
-    display: flex; /* Added to enable align-items */
-    align-items: flex-end; /* Changed from end to flex-end */
-    background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="1015" height="845" viewBox="0 0 1015 845" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M120.584 521.082C142.69 403.162 248.732 300.297 373.762 290.462C441.899 285.176 510.388 305.682 578.245 297.855C635.756 290.999 688.677 264.358 727.097 222.921C783.148 162.038 802.101 81.9082 861.445 23.9688C943.21 -55.9487 1085.9 -57.1864 1185.39 1.58928C1284.88 60.365 1345.03 159.964 1372.57 268.517L1373.65 301.534C1379.64 414.135 1348.6 545.167 1280.19 645.524C1210.86 747.219 1165.28 789.369 1038.95 862.329C931.685 924.416 721.632 951.713 596.216 954.59C470.801 957.467 341.988 921.807 247.646 842.793C153.304 763.778 98.4438 639.001 120.584 521.082Z" fill="%23CCE9DA"/%3E%3Cpath d="M529.331 193.407C525.787 170.068 542.706 148.402 567.12 145.014C591.535 141.626 614.2 157.799 617.744 181.137C621.288 204.476 604.37 226.142 579.955 229.53C555.541 232.918 532.876 216.745 529.331 193.407Z" fill="%23CCE9DA"/%3E%3Cpath d="..." fill="%23009247"/%3E%3Cpath opacity="0.1" d="..." fill="black"/%3E%3Cpath d="..." fill="%23009247"/%3E%3Cdefs%3E%3Cfilter id="filter0_d_0_1" x="221.405" y="279.533" width="631.983" height="604.035" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"%3E%3CfeFlood flood-opacity="0" result="BackgroundImageFix"/%3E%3CfeColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/%3E%3CfeOffset dy="4"/%3E%3CfeGaussianBlur stdDeviation="2"/%3E%3CfeComposite in2="hardAlpha" operator="out"/%3E%3CfeColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/%3E%3CfeBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/%3E%3CfeBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-position: right;
-   
+  display: flex; /* Added to enable align-items */
+  align-items: flex-end; /* Changed from end to flex-end */
+  background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width="1015" height="845" viewBox="0 0 1015 845" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M120.584 521.082C142.69 403.162 248.732 300.297 373.762 290.462C441.899 285.176 510.388 305.682 578.245 297.855C635.756 290.999 688.677 264.358 727.097 222.921C783.148 162.038 802.101 81.9082 861.445 23.9688C943.21 -55.9487 1085.9 -57.1864 1185.39 1.58928C1284.88 60.365 1345.03 159.964 1372.57 268.517L1373.65 301.534C1379.64 414.135 1348.6 545.167 1280.19 645.524C1210.86 747.219 1165.28 789.369 1038.95 862.329C931.685 924.416 721.632 951.713 596.216 954.59C470.801 957.467 341.988 921.807 247.646 842.793C153.304 763.778 98.4438 639.001 120.584 521.082Z" fill="%23CCE9DA"/%3E%3Cpath d="M529.331 193.407C525.787 170.068 542.706 148.402 567.12 145.014C591.535 141.626 614.2 157.799 617.744 181.137C621.288 204.476 604.37 226.142 579.955 229.53C555.541 232.918 532.876 216.745 529.331 193.407Z" fill="%23CCE9DA"/%3E%3Cpath d="..." fill="%23009247"/%3E%3Cpath opacity="0.1" d="..." fill="black"/%3E%3Cpath d="..." fill="%23009247"/%3E%3Cdefs%3E%3Cfilter id="filter0_d_0_1" x="221.405" y="279.533" width="631.983" height="604.035" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"%3E%3CfeFlood flood-opacity="0" result="BackgroundImageFix"/%3E%3CfeColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/%3E%3CfeOffset dy="4"/%3E%3CfeGaussianBlur stdDeviation="2"/%3E%3CfeComposite in2="hardAlpha" operator="out"/%3E%3CfeColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/%3E%3CfeBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/%3E%3CfeBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-position: right;
 }
 
 .not-found-container .btn {
-    position: relative;
-    z-index: 1000;
-  }
+  position: relative;
+  z-index: 1000;
+}
 
-  thead{
 
- background-color: aqua !important;
+/* ------------------------------- Tables ------------------------------- */
 
-  }
-  table td img {
-    max-width: 100px !important;  /* يحد من عرض الصورة داخل الخلية */
-    height: auto;                /* يحافظ على نسبة الأبعاد */
-    display: block;              /* يمنع أي مسافات غير مرغوبة حول الصورة */
-    margin: auto;                /* يضمن تمركز الصورة داخل الخلية */
+thead {
+  background-color: aqua !important;
+}
+table td img {
+  max-width: 100px !important; /* يحد من عرض الصورة داخل الخلية */
+  height: auto; /* يحافظ على نسبة الأبعاد */
+  display: block; /* يمنع أي مسافات غير مرغوبة حول الصورة */
+  margin: auto; /* يضمن تمركز الصورة داخل الخلية */
 }
 
 table {
+  text-align: center;
+}
 
 
-    text-align: center;
+
+.custom-thead thead {
+    border: none !important; /* Remove borders */
+    padding: 200px; /* Ensure padding applies */
+  }
+
+  .modal-content {
+    border: none !important; /* Ensure no border */
+    border-radius: 0.5rem; /* Optional: Rounded corners */
+}
+
+.modal-body {
+    padding: 0; /* Remove padding */
 }

@@ -120,9 +120,9 @@ export default function RecipesList() {
     <p className="mt-2 fw-bold text-success">Loading categories...</p>
   </div>
 ) : recipes.length > 0 ? (
-        <table className="table table-bordered table-hover">
-          <thead className="bg-info text-white">
-            <tr className="bg-success text-white">
+        <table className="table   table-hover    ">
+          <thead className="  table-info table-te  ">
+            <tr className="">
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Image</th>

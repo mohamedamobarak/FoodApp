@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../assets/Images/Logo1.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseUrl } from "../../../Services/URLs/urls";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function Register() {
   const onSubmit = async (data) => {
     try {
       let response = await axios.post(
-        "https://upskilling-egypt.com:3006/api/v1/Users/Register",
+        `${baseUrl}api/v1/Users/Register`,
         data
       );
       console.log(response.data.token);
@@ -35,15 +35,9 @@ export default function Register() {
 
   return (
     <>
-      <div className="authContainer">
-        <div className="container-fluid overlay">
-          <div className="row vh-100 justify-content-center align-items-center">
-            <div className="col-md-5 bg-white py-3 px-5 rounded-3">
+      
               <ToastContainer position="top-center" autoClose={3000} />
-              <div className="logoContainer text-center">
-                <img src={logo} alt="logo" className="w-50" />
-              </div>
-              <div className="title">
+              <div className="title text-start">
                 <h3 className="h5">Register</h3>
                 <p className="text-muted">
                   Welcome! Please enter your details.
@@ -243,10 +237,7 @@ export default function Register() {
                   </Link>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
+           
     </>
   );
 }

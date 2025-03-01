@@ -1,6 +1,5 @@
 
 import {  useNavigate } from "react-router-dom";
-import logo from "../../../assets/Images/Logo1.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -36,15 +35,10 @@ export default function  VerifyAccount() {
 
   return (
     <>
-      <div className="authContainer">
-        <div className="container-fluid overlay">
-          <div className="row vh-100 justify-content-center align-items-center">
-            <div className="col-md-5 bg-white py-3 px-5 rounded-3">
+    
               <ToastContainer position="top-center" autoClose={3000} />
-              <div className="logoContainer text-center">
-                <img src={logo} alt="logo" className="w-50" />
-              </div>
-              <div className="title">
+
+              <div className="title text-start">
                 <h3 className="h5">  Verify Account  </h3>
                 <p className="text-muted">
                 Please Enter Your OTP  or Check Your Inbox  </p>
@@ -120,10 +114,7 @@ export default function  VerifyAccount() {
                  
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
+           
     </>
   );
 }

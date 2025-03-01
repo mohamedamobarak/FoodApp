@@ -124,7 +124,7 @@ export default function UsersList() {
   </div>
 ) : users.length > 0 ? (
   <table className="table table-bordered table-hover">
-    <thead className="bg-info text-white">
+    <thead className="bg-info text-white custom-thead ">
       <tr className="bg-success text-white">
         <th scope="col">ID</th>
         <th scope="col">User Name</th>
