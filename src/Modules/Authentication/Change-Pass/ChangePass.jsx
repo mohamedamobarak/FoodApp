@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 import logo from "../../../assets/Images/Logo1.png";
+import { axiosInstance } from "../../../Services/URLs/urls";
 
 export default function ChangePass() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +18,7 @@ export default function ChangePass() {
 
   const onSubmit = async (data) => {
     try {
-      let response = await axios.post(
+      let response = await axiosInstance.post(
         "https://upskilling-egypt.com:3006/api/v1/Users/ChangePassword",
         {
           newPassword: data.password,
@@ -63,7 +63,7 @@ export default function ChangePass() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="Old Password"
-                {...register("password", {
+                {...register("Old_password", {
                   required: "Old password is required",
                   minLength: {
                     value: 8,

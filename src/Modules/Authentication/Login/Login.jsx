@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
-import { baseUrl } from "../../../Services/URLs/urls";
+import {  axiosInstance, USERS_URLS } from "../../../Services/URLs/urls";
 
 // eslint-disable-next-line react/prop-types
 export function Login({saveLoginData}) {
@@ -20,8 +19,8 @@ export function Login({saveLoginData}) {
   let onSubmit = async (data) => {
   try {
     // ----------------- Success --------------------------
-    let response = await axios.post(
-      `${baseUrl}api/v1/Users/Login`,
+    let response = await axiosInstance.post(
+      USERS_URLS.LOGIN,
       data
     );
 

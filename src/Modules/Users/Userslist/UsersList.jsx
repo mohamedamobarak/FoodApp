@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Header from "../../Shared/Header/Header";
 import userImg from "../../../assets/Images/recipes-side-img.png";
 import NoData from "../../Shared/NoData/NoData";
 import deleteImg from "../../../assets/Images/Delete img.svg";
+import { axiosInstance, USERS_URLS } from "../../../Services/URLs/urls";
 
 
 export default function UsersList() {
@@ -14,8 +14,8 @@ export default function UsersList() {
 
   const getAllUsers = async () => {
     try {
-      const response = await axios.get(
-        "https://upskilling-egypt.com:3006/api/v1/Users/?pageSize=10&pageNumber=1",
+      const response = await axiosInstance.get(
+        USERS_URLS.GET_USER(10),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -33,8 +33,8 @@ export default function UsersList() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(
-        `https://upskilling-egypt.com:3006/api/v1/Users/${id}`,
+      await axiosInstance.delete(
+        USERS_URLS.DELETE_USER(id),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,

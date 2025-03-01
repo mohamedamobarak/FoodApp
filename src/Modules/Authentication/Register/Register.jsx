@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { baseUrl } from "../../../Services/URLs/urls";
+import { axiosInstance, USERS_URLS } from "../../../Services/URLs/urls";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -16,8 +15,8 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      let response = await axios.post(
-        `${baseUrl}api/v1/Users/Register`,
+      let response = await axiosInstance.post(
+       USERS_URLS.REGISTER,
         data
       );
       console.log(response.data.token);

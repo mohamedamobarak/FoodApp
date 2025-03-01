@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"; 
-import axios from "axios";
 import Header from "../../Shared/Header/Header";
 import userImg from "../../../assets/Images/dashboard-side-img.png";
 import NoData from "../../Shared/NoData/NoData";
 import deleteImg from "../../../assets/Images/Delete img.svg";
+import { axiosInstance, CATEGORIES_URLS } from "../../../Services/URLs/urls";
 
 export default function CategoriesList() {
   const [categories, setCategories] = useState([]);
@@ -12,8 +12,8 @@ export default function CategoriesList() {
 
   const getAllCategories = async () => {
     try {
-      const response = await axios.get(
-        "https://upskilling-egypt.com:3006/api/v1/Category/?pageSize=10&pageNumber=1",
+      const response = await axiosInstance.get(
+        CATEGORIES_URLS.GET_CATEGORIES(1),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -34,8 +34,8 @@ export default function CategoriesList() {
 
   const deleteCategory = async (id) => {
     try {
-      await axios.delete(
-        `https://upskilling-egypt.com:3006/api/v1/Category/${id}`,
+      await axiosInstance.delete(
+        CATEGORIES_URLS.DELETE_CATEGORY(id),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,

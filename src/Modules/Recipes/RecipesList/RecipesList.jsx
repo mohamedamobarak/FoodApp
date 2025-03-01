@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Header from "../../Shared/Header/Header";
 import recipesImg from "../../../assets/Images/recipes-side-img.png";
 import NoData from "../../Shared/NoData/NoData";
 import deleteImg from "../../../assets/Images/Delete img.svg";
+import { axiosInstance, RECIPES_URLS } from "../../../Services/URLs/urls";
 
 export default function RecipesList() {
   const [recipes, setRecipes] = useState([]);
@@ -13,8 +13,9 @@ export default function RecipesList() {
 
   const getAllRecipes = async () => {
     try {
-      const response = await axios.get(
-        "https://upskilling-egypt.com:3006/api/v1/Recipe/?pageSize=10&pageNumber=1",
+      const response = await axiosInstance.get(
+
+        RECIPES_URLS.GET_RECIPES(1),
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -32,8 +33,8 @@ export default function RecipesList() {
 
   const deleteRecipe = async (id) => {
     try {
-      await axios.delete(
-        `https://upskilling-egypt.com:3006/api/v1/Recipe/${id}`,
+      await axiosInstance.delete(
+        RECIPES_URLS.DELETE_RECIPE,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
