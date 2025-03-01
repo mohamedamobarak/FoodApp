@@ -15,9 +15,7 @@ export default function CategoriesList() {
       const response = await axiosInstance.get(
         CATEGORIES_URLS.GET_CATEGORIES(1),
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
+          
         }
       );
       setCategories(response.data.data);
@@ -36,11 +34,6 @@ export default function CategoriesList() {
     try {
       await axiosInstance.delete(
         CATEGORIES_URLS.DELETE_CATEGORY(id),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
-        }
       );
 
       // Update the list

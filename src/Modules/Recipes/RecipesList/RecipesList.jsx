@@ -16,11 +16,7 @@ export default function RecipesList() {
       const response = await axiosInstance.get(
 
         RECIPES_URLS.GET_RECIPES(1),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
-        }
+        
       );
       setRecipes(response.data.data);
     } catch (error) {
@@ -35,11 +31,6 @@ export default function RecipesList() {
     try {
       await axiosInstance.delete(
         RECIPES_URLS.DELETE_RECIPE,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
-        }
       );
 
       document.getElementById("closeModalBtn").click();

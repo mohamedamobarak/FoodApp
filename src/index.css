@@ -17,7 +17,7 @@
 .sidebar-container .ps-sidebar-container {
   background-color: #1f263e !important;
   color: aliceblue;
-  height: 110vh;
+  height: 125vh;
 }
 
 .sidebar-container .logo {
@@ -77,13 +77,11 @@
 
 /* ------------------------------- Tables ------------------------------- */
 
-thead {
-  background-color: aqua !important;
-}
+
 table td img {
-  max-width: 100px !important; /* يحد من عرض الصورة داخل الخلية */
-  height: auto; /* يحافظ على نسبة الأبعاد */
-  display: block; /* يمنع أي مسافات غير مرغوبة حول الصورة */
+  max-width: 100px !important; 
+  height: auto; 
+  display: block;
   margin: auto; /* يضمن تمركز الصورة داخل الخلية */
 }
 

@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 
 import logo from "../../../assets/Images/Logo1.png";
-import { axiosInstance } from "../../../Services/URLs/urls";
+import { axiosInstance, USERS_URLS } from "../../../Services/URLs/urls";
+import { CONFIRM_NEW_PASSWORD_VALIDATION, NEW_PASSWORD_VALIDATION, PASSWORD_VALIDATION } from "../../../Services/validation/validation";
 
 export default function ChangePass() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,12 +19,9 @@ export default function ChangePass() {
 
   const onSubmit = async (data) => {
     try {
-      let response = await axiosInstance.post(
-        "https://upskilling-egypt.com:3006/api/v1/Users/ChangePassword",
-        {
-          newPassword: data.password,
-          confirmPassword: data.confirmPassword,
-        }
+      let response = await axiosInstance.put(
+        USERS_URLS.CHANGE_PASS,
+        data
       );
 
       toast.success(response?.data?.message || "Password changed successfully!");
@@ -63,19 +61,7 @@ export default function ChangePass() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="Old Password"
-                {...register("Old_password", {
-                  required: "Old password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be at least 8 characters",
-                  },
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message:
-                      "Must contain uppercase, lowercase, number, and special character",
-                  },
-                })}
+                {...register("oldPassword", PASSWORD_VALIDATION)}
               />
               <span
                 className="position-absolute end-0 top-50 translate-middle-y me-3"
@@ -85,9 +71,9 @@ export default function ChangePass() {
                 <i className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
               </span>
             </div>
-            {errors.password && <span className="text-danger">{errors.password.message}</span>}
+            {errors.oldPassword && <span className="text-danger">{errors.oldPassword.message}</span>}
 
-            {/*  Confirm Password */}
+            {/*  NEW Password */}
 
             <div className="input-group mb-3">
               <span className="input-group-text">
@@ -98,19 +84,7 @@ export default function ChangePass() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="New Password"
-                {...register("password", {
-                  required: "New password is required",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be at least 8 characters",
-                  },
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message:
-                      "Must contain uppercase, lowercase, number, and special character",
-                  },
-                })}
+                {...register("newPassword", NEW_PASSWORD_VALIDATION)}
               />
               <span
                 className="position-absolute end-0 top-50 translate-middle-y me-3"
@@ -120,9 +94,9 @@ export default function ChangePass() {
                 <i className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
               </span>
             </div>
-            {errors.password && <span className="text-danger">{errors.password.message}</span>}
+            {errors.newPassword && <span className="text-danger">{errors.newPassword.message}</span>}
 
-            {/* Confirm Password */}
+            {/* Confirm NEW Password */}
             <div className="input-group mb-3">
               <span className="input-group-text">
                 <i className="fa-solid fa-lock"></i>
@@ -131,10 +105,7 @@ export default function ChangePass() {
                 type={showConfirmPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="Confirm Password"
-                {...register("confirmPassword", {
-                  required: "Please confirm your password",
-                  validate: (value) => value === watch("password") || "Passwords do not match",
-                })}
+                {...register("confirmNewPassword", CONFIRM_NEW_PASSWORD_VALIDATION(watch))}
               />
               <span
                 className="position-absolute end-0 top-50 translate-middle-y me-3"
@@ -144,7 +115,7 @@ export default function ChangePass() {
                 <i className={`fa-solid ${showConfirmPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
               </span>
             </div>
-            {errors.confirmPassword && <span className="text-danger">{errors.confirmPassword.message}</span>}
+            {errors.confirmNewPassword && <span className="text-danger">{errors.confirmNewPassword.message}</span>}
 
             {/* Submit Button */}
             <button className="btn btn-success w-100 mt-3" type="submit">

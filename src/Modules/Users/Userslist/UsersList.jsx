@@ -16,11 +16,7 @@ export default function UsersList() {
     try {
       const response = await axiosInstance.get(
         USERS_URLS.GET_USER(10),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
-        }
+        
       );
       setUsers(response.data.data);
     } catch (error) {
@@ -35,11 +31,7 @@ export default function UsersList() {
     try {
       await axiosInstance.delete(
         USERS_URLS.DELETE_USER(id),
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("Token")}`,
-          },
-        }
+        
       );
 
       // close modal

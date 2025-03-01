@@ -3,7 +3,10 @@ import axios from "axios";
 export const baseUrl = "https://upskilling-egypt.com:3006";
 export const axiosInstance = axios.create({
 
-    baseURL :baseUrl 
+    baseURL :baseUrl ,
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem("Token")}`,
+      },
 }
 
 )
@@ -12,6 +15,7 @@ export const USERS_URLS = {
   LOGIN: `/api/v1/Users/Login`,
   REGISTER: `/api/v1/Users/Register`,
   FORGET_PASS: `/api/v1/Users/Reset/Request`,
+  CHANGE_PASS: `/api/v1/Users/ChangePassword`,
   RESET_PASS: `/api/v1/Users/Reset`,
   RESET_VERIFY: `/api/v1/Users/verify`,
   GET_USER: (id) => `/api/v1/Users/?pageSize=10&pageNumber=${id}`,
