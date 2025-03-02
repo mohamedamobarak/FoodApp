@@ -146,20 +146,26 @@ export default function CategoriesList() {
                     <td>{category.id}</td>
                     <td>{category.name}</td>
                     <td>{new Date(category.creationDate).toLocaleDateString()}</td>
-                    <td>
-                      <div className="d-flex gap-2">
-                        <button className="btn btn-warning btn-sm">Edit</button>
-                        <button
-                          className="btn btn-danger btn-sm"
-                          type="button"
-                          data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop"
-                          onClick={() => setCategoryID(category.id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
+                    <div className="container text-center">
+    <div className="dropdown">
+        <button className="btn btn-light border-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <i className="fa-solid fa-ellipsis"></i>
+        </button>
+        <ul className="dropdown-menu dropdown-menu-end text-center " aria-labelledby="dropdownMenuButton">
+
+              <li><button className="btn btn-sm">Edit</button></li>
+              <li><button
+                className="btn btn-sm"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                onClick={()=>setCategoryID(category.id)}
+              >
+                Delete
+              </button></li>
+          
+        </ul>
+    </div>
+</div>
                   </tr>
                 ))}
               </tbody>

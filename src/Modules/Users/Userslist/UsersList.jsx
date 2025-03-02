@@ -31,7 +31,11 @@ export default function UsersList() {
     try {
       await axiosInstance.delete(
         USERS_URLS.DELETE_USER(id),
-        
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("Token")}`,
+          },
+        }
       );
 
       // close modal
@@ -141,17 +145,28 @@ export default function UsersList() {
             />
           </td>
           <td>
-            <div className="d-flex gap-2">
-              <button className="btn btn-warning btn-sm">Edit</button>
-              <button
-                className="btn btn-danger btn-sm"
+            
+
+            <div className="container text-center">
+    <div className="dropdown">
+        <button className="btn btn-light border-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <i className="fa-solid fa-ellipsis"></i>
+        </button>
+        <ul className="dropdown-menu dropdown-menu-end text-center " aria-labelledby="dropdownMenuButton">
+
+              <li><button className="btn btn-sm">Edit</button></li>
+              <li><button
+                className="btn btn-sm"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
                 onClick={() => setUserID(user.id)}
               >
                 Delete
-              </button>
-            </div>
+              </button></li>
+          
+        </ul>
+    </div>
+</div>
           </td>
         </tr>
       ))}

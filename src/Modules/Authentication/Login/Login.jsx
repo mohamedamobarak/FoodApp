@@ -9,6 +9,8 @@ import { EMAIL_VALIDATION, PASSWORD_VALIDATION } from "../../../Services/validat
 export function Login({saveLoginData}) {
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
 
   const navigate = useNavigate();
   let {
@@ -19,14 +21,15 @@ export function Login({saveLoginData}) {
 
   let onSubmit = async (data) => {
   try {
+    setLoading(true)
     // ----------------- Success --------------------------
     let response = await axiosInstance.post(
       USERS_URLS.LOGIN,
       data
     );
+    setLoading(true);
 
     console.log(response.data.token);
-
     // Save Login data
     localStorage.setItem("Token", response.data.token); // Save token in localStorage
 
@@ -34,7 +37,7 @@ export function Login({saveLoginData}) {
 
     setTimeout(() => {
       navigate("/dashboard"); // Redirect to "/dashboard"
-    }, 3000);
+    }, 1000);
 
     // بتعمل معايا error لو معملتش كده
 
@@ -42,9 +45,16 @@ export function Login({saveLoginData}) {
       saveLoginData();              
     }
 
+   
+
   } catch (error) {
     // ----------------- Fail --------------------------
     toast.error(error.response?.data?.message || "Login failed!");
+    setLoading(true);
+
+  }
+  finally {
+    setLoading(false); // Stop loading
   }
 };
 
@@ -138,8 +148,8 @@ export function Login({saveLoginData}) {
 
                 {/* Button */}
 
-                <button className="btn btn-success w-100" type="submit">
-                  Login
+                <button className="btn btn-success w-100" disabled={loading} type="submit">
+                {loading ? "Loading..." : "login"}
                 </button>
               </form>
             
