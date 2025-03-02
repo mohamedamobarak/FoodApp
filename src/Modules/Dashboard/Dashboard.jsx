@@ -1,5 +1,6 @@
 import Header from "../Shared/Header/Header";
 import dashboardImg from "../../assets/Images/dashboard-side-img.png";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
@@ -23,11 +24,12 @@ export default function Dashboard() {
             click here and sill it with the table !
           </p>
         </div>
-        <div className=" d-flex align-items-center">
-          <button className="btn btn-success px-5 py-2">
-            Fill Recipes <i className="fa-solid fa-arrow-right fa-lg"></i>
-          </button>
-        </div>
+        
+<div className="d-flex align-items-center">
+    <Link to="recipes-data" className="btn btn-success px-5 py-2">
+        Fill Recipes <i className="fa-solid fa-arrow-right fa-lg"></i>
+    </Link>
+</div>
       </div>
 
       <div className="mt-4">

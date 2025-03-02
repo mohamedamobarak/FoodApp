@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import Header from "../../Shared/Header/Header";
 import userImg from "../../../assets/Images/dashboard-side-img.png";
 import NoData from "../../Shared/NoData/NoData";
@@ -14,9 +14,7 @@ export default function CategoriesList() {
     try {
       const response = await axiosInstance.get(
         CATEGORIES_URLS.GET_CATEGORIES(1),
-        {
-          
-        }
+        {}
       );
       setCategories(response.data.data);
     } catch (error) {
@@ -32,9 +30,7 @@ export default function CategoriesList() {
 
   const deleteCategory = async (id) => {
     try {
-      await axiosInstance.delete(
-        CATEGORIES_URLS.DELETE_CATEGORY(id),
-      );
+      await axiosInstance.delete(CATEGORIES_URLS.DELETE_CATEGORY(id));
 
       // Update the list
       setCategories((prev) => prev.filter((category) => category.id !== id));
@@ -60,9 +56,9 @@ export default function CategoriesList() {
           <h3>Categories List</h3>
           <p>You can check all category details below.</p>
         </div>
-        <div >
+        <div>
           <button className="btn btn-success px-5 py-2">
-          Add New Category
+            Add New Category
           </button>
         </div>
       </div>
@@ -95,7 +91,11 @@ export default function CategoriesList() {
                   ></button>
                 </div>
                 <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-                  <img src={deleteImg} alt="Delete Confirmation" className="mb-3" />
+                  <img
+                    src={deleteImg}
+                    alt="Delete Confirmation"
+                    className="mb-3"
+                  />
                   <h4 className="text-dark fw-bold">Delete This Category?</h4>
                   <p>
                     Are you sure you want to delete this item? If you are sure,
@@ -145,27 +145,40 @@ export default function CategoriesList() {
                   <tr key={category.id}>
                     <td>{category.id}</td>
                     <td>{category.name}</td>
-                    <td>{new Date(category.creationDate).toLocaleDateString()}</td>
+                    <td>
+                      {new Date(category.creationDate).toLocaleDateString()}
+                    </td>
                     <div className="container text-center">
-    <div className="dropdown">
-        <button className="btn btn-light border-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-        <i className="fa-solid fa-ellipsis"></i>
-        </button>
-        <ul className="dropdown-menu dropdown-menu-end text-center " aria-labelledby="dropdownMenuButton">
-
-              <li><button className="btn btn-sm">Edit</button></li>
-              <li><button
-                className="btn btn-sm"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                onClick={()=>setCategoryID(category.id)}
-              >
-                Delete
-              </button></li>
-          
-        </ul>
-    </div>
-</div>
+                      <div className="dropdown">
+                        <button
+                          className="btn btn-light border-0"
+                          type="button"
+                          id="dropdownMenuButton"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <i className="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <ul
+                          className="dropdown-menu dropdown-menu-end text-center "
+                          aria-labelledby="dropdownMenuButton"
+                        >
+                          <li>
+                            <button className="btn btn-sm">Edit</button>
+                          </li>
+                          <li>
+                            <button
+                              className="btn btn-sm"
+                              data-bs-toggle="modal"
+                              data-bs-target="#staticBackdrop"
+                              onClick={() => setCategoryID(category.id)}
+                            >
+                              Delete
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </tr>
                 ))}
               </tbody>
